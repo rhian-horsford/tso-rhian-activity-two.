@@ -1,9 +1,14 @@
 # tso-rhian-activity-two.
 
-## Number guessing game
+## Guessing games
 
-The computer picks a random number between 1 and 100 and gives higher/lower hints
-until you guess it.
+Pick a mode at startup:
+
+1. **Number game** — the computer picks a number between 1 and 100 and gives
+   higher/lower hints until you guess it.
+2. **Word game** — guess a hidden GitHub term one letter at a time, with 6 misses
+   allowed. Repeated letters are free; type `!` to guess the whole term, which
+   costs a miss if you're wrong.
 
 ```bash
 python3 guessing_game.py
