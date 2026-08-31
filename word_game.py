@@ -1,9 +1,6 @@
-"""Two guessing games: find the computer's number, or reveal a hidden GitHub term."""
+"""Word guessing game: reveal a hidden GitHub term one letter at a time."""
 
 import random
-
-LOW = 1
-HIGH = 100
 
 WORDS = [
     "repository",
@@ -22,37 +19,6 @@ WORDS = [
 ]
 
 MAX_WRONG = 6
-
-
-def play_number():
-    secret = random.randint(LOW, HIGH)
-    attempts = 0
-
-    print(f"\nI'm thinking of a number between {LOW} and {HIGH}. Can you find it?")
-
-    while True:
-        raw = input(f"Guess a number between {LOW} and {HIGH}: ").strip()
-
-        try:
-            guess = int(raw)
-        except ValueError:
-            print("That's not a whole number. Try again.")
-            continue
-
-        if not LOW <= guess <= HIGH:
-            print(f"Stay between {LOW} and {HIGH}, please.")
-            continue
-
-        attempts += 1
-
-        if guess < secret:
-            print("Higher!")
-        elif guess > secret:
-            print("Lower!")
-        else:
-            plural = "" if attempts == 1 else "es"
-            print(f"Correct! You got it in {attempts} guess{plural}.")
-            return
 
 
 def _masked(word, guessed):
@@ -112,38 +78,3 @@ def play_word():
                 print(f"\nOut of guesses. The term was '{word}'.")
                 return
             print("Nope.")
-
-
-def choose_game():
-    while True:
-        print("\n1) Number guessing game")
-        print("2) Word guessing game (GitHub terms)")
-        choice = input("Pick a game (1/2), or 'q' to quit: ").strip().lower()
-
-        if choice == "1":
-            return play_number
-        if choice == "2":
-            return play_word
-        if choice.startswith("q"):
-            return None
-        print("Please enter 1, 2, or q.")
-
-
-def main():
-    print("Welcome! Two games to choose from.")
-    try:
-        while True:
-            game = choose_game()
-            if game is None:
-                break
-            game()
-            again = input("\nPlay again? (y/n): ").strip().lower()
-            if not again.startswith("y"):
-                break
-        print("Thanks for playing!")
-    except (EOFError, KeyboardInterrupt):
-        print("\nGoodbye!")
-
-
-if __name__ == "__main__":
-    main()
