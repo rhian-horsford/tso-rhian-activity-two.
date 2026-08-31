@@ -7,10 +7,11 @@ from word_game import play_word
 
 def choose_game():
     while True:
-        print("\n1) Number guessing game")
-        print("2) Word guessing game (GitHub terms)")
-        print("3) Adventure")
-        choice = input("Pick a game (1/2/3), or 'q' to quit: ").strip().lower()
+        print("\nChoose your challenge:")
+        print("  1) Number Quest      Find the secret number from 1 to 100")
+        print("  2) GitHub Word Vault Guess the hidden GitHub term")
+        print("  3) Dungeon Run       Build a hero and face the final boss")
+        choice = input("\nEnter 1, 2, 3, or q to quit: ").strip().lower()
 
         if choice == "1":
             return play_number
@@ -24,16 +25,24 @@ def choose_game():
 
 
 def main():
-    print("Welcome! Three games to choose from.")
+    print("=" * 52)
+    print("          TERMINAL GAME ARCADE")
+    print("=" * 52)
+    print("Three quick games. One tiny command-line arcade.")
     try:
         while True:
             game = choose_game()
             if game is None:
                 break
             game()
-            again = input("\nPlay again? (y/n): ").strip().lower()
-            if not again.startswith("y"):
-                break
+            while True:
+                next_step = input("\nReturn to the main menu or quit? (m/q): ").strip().lower()
+                if next_step == "m":
+                    break
+                if next_step == "q":
+                    print("Thanks for playing!")
+                    return
+                print("Please enter m for menu or q to quit.")
         print("Thanks for playing!")
     except (EOFError, KeyboardInterrupt):
         print("\nGoodbye!")

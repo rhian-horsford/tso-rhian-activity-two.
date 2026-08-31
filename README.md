@@ -21,9 +21,10 @@ python3 main.py
 When the menu opens, choose one of the three games:
 
 ```text
-1) Number guessing game
-2) Word guessing game (GitHub terms)
-3) Adventure
+Choose your challenge:
+	1) Number Quest      Find the secret number from 1 to 100
+	2) GitHub Word Vault Guess the hidden GitHub term
+	3) Dungeon Run       Build a hero and face the final boss
 ```
 
 Type `q` at the menu when you are ready to quit.
@@ -46,4 +47,4 @@ Type `q` at the menu when you are ready to quit.
 
 ## Try a Run
 
-Open a terminal in this folder and run the command above. Pick a game, play a round, then choose whether to jump back into the menu for another run.
+Open a terminal in this folder and run the command above. Pick a game, play a round, then choose whether to return to the main menu or quit.
